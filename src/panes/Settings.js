@@ -18,6 +18,14 @@ function quit () {
   ipcRenderer.send('quit-application')
 }
 
+function openNodeSettings () {
+  ipcRenderer.send('open-node-settings')
+}
+
+function openWebUI () {
+  ipcRenderer.send('open-webui')
+}
+
 const options = [
   {
     title: 'Launch on startup',
@@ -63,6 +71,20 @@ export default function Settings (props) {
 
       <div className='main'>
         {opts}
+
+        <InfoBlock
+          title='Node Settings'
+          info='Click to edit'
+          key='node-settings'
+          button={false}
+          onClick={openNodeSettings} />
+
+        <InfoBlock
+          title='Open WebUI'
+          info='Click to open'
+          key='open-webui'
+          button={false}
+          onClick={openWebUI} />
 
         <InfoBlock
           title='Quit'

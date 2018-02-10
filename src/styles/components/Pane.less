@@ -3,8 +3,9 @@
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
-  background: #000;
+  background: #eee;
   flex-grow: 1;
+  color: #212121;
 }
 
 @keyframes loading {
@@ -27,14 +28,4 @@
   to {
     left: 100%;
   }
-}
-
-.pane.has-footer > .main {
-  padding-bottom: 5.25em;
-}
-
-.pane.translucent .footer>*:not(.always-on),
-.pane.translucent .main>*:not(.always-on) {
-  opacity: 0.2;
-  pointer-events: none;
 }

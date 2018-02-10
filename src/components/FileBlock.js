@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import fileExtension from 'file-extension'
-import prettyBytes from 'pretty-bytes'
+import prettyBytes from '../utils/pretty-bytes'
 
 import Block from './Block'
 import Icon from './Icon'

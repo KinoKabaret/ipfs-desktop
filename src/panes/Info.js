@@ -1,93 +1,97 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {clipboard, ipcRenderer} from 'electron'
-import prettyBytes from 'pretty-bytes'
+import {clipboard} from 'electron'
+import prettyBytes from '../utils/pretty-bytes'
 
 import Pane from '../components/Pane'
 import Header from '../components/Header'
-import InfoBlock from '../components/InfoBlock'
 
 function copy (text) {
   return () => { clipboard.writeText(text) }
 }
 
-function openNodeSettings () {
-  ipcRenderer.send('open-node-settings')
-}
-
-function openWebUI () {
-  ipcRenderer.send('open-webui')
-}
-
-function stopDaemon () {
-  ipcRenderer.send('stop-daemon')
+const styles = {
+  main: {
+    display: 'flex',
+    background: '#fff',
+    width: '90%',
+    margin: '1em auto'
+  },
+  left: {
+    width: '60%',
+    padding: '1em',
+    color: '#7f8491'
+  },
+  right: {
+    width: '40%',
+    backgroundColor: '#215d7f'
+  },
+  hr: {
+    color: '#f3f3f2',
+    border: '1px solid'
+  },
+  stats: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%'
+  },
+  stat: {
+    title: {
+      margin: '0',
+      fontSize: '0.8em'
+    },
+    value: {
+      margin: '0',
+      fontSize: '1.25em',
+      fontWeight: 'medium'
+    }
+  },
+  title: {
+    fontSize: '28px',
+    fontWeight: '500'
+  }
 }
 
 export default function Info (props) {
   return (
     <Pane className='info'>
-      <Header title='Your Node' />
+      <Header />
 
-      <div className='main'>
-        <div className='sharing'>
-          <p>{prettyBytes(props.repo.repoSize)}</p>
-          <p>Sharing {props.repo.numObjects} objects</p>
+      <div style={styles.main}>
+        <div style={styles.left}>
+          <div style={styles.stats}>
+            <div>
+              <p style={styles.stat.title}>Space Used</p>
+              <p style={styles.stat.value}>{prettyBytes(props.repo.repoSize)}</p>
+            </div>
+
+            <div>
+              <p style={styles.stat.title}>Down Speed</p>
+              <p style={styles.stat.value}>{prettyBytes(props.bw.rateIn) + '/s'}</p>
+            </div>
+
+            <div>
+              <p style={styles.stat.title}>Up Speed</p>
+              <p style={styles.stat.value}>{prettyBytes(props.bw.rateOut) + '/s'}</p>
+            </div>
+          </div>
+
+          <hr style={styles.hr} />
+
+          <div>
+            <h2 style={styles.title}>Your Node Informations</h2>
+
+            <p><strong>Location:</strong> {props.node.location}</p>
+            <p><strong>Protocol Version:</strong> {props.node.protocolVersion}</p>
+            <p><strong>Peer ID:</strong> {props.node.id}</p>
+            <p><strong>Public Key:</strong> {props.node.publicKey}</p>
+          </div>
         </div>
 
-        <InfoBlock
-          title='Peer ID'
-          info={props.node.id}
-          onClick={copy(props.node.id)} />
-
-        <InfoBlock
-          title='Location'
-          info={props.node.location} />
-
-        <InfoBlock
-          title='Bandwidth Used'
-          info={prettyBytes(props.bw.totalIn + props.bw.totalOut)} />
-
-        <InfoBlock
-          title='Down Speed'
-          info={prettyBytes(props.bw.rateIn) + '/s'} />
-
-        <InfoBlock
-          title='Up Speed'
-          info={prettyBytes(props.bw.rateOut) + '/s'} />
-
-        <InfoBlock
-          title='Protocol Version'
-          info={props.node.protocolVersion} />
-
-        <InfoBlock
-          title='Addresses'
-          info={props.node.addresses} />
-
-        <InfoBlock
-          title='Public Key'
-          info={props.node.publicKey}
-          onClick={copy(props.node.publicKey)} />
-
-        <InfoBlock
-          title='Node Settings'
-          info='Click to edit'
-          key='node-settings'
-          button={false}
-          onClick={openNodeSettings} />
-
-        <InfoBlock
-          title='Open WebUI'
-          info='Click to open'
-          key='open-webui'
-          button={false}
-          onClick={openWebUI} />
-
-        <InfoBlock
-          title='Stop Daemon'
-          info='Click to stop'
-          key='stop-daemon'
-          button={false}
-          onClick={stopDaemon} />
+        <div style={styles.right}>
+          GRAPH
+        </div>
       </div>
     </Pane>
   )

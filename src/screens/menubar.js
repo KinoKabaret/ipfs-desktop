@@ -8,7 +8,6 @@ import PaneContainer from '../components/PaneContainer'
 import MenuOption from '../components/MenuOption'
 import Menu from '../components/Menu'
 
-import Peers from '../panes/Peers'
 import Loader from '../panes/Loader'
 import Start from '../panes/Start'
 import Files from '../panes/Files'
@@ -37,11 +36,6 @@ const panes = [
     id: 'pinned',
     title: 'Pin',
     icon: 'pin'
-  },
-  {
-    id: 'peers',
-    title: 'Peers',
-    icon: 'pulse'
   },
   {
     id: 'settings',
@@ -102,9 +96,6 @@ class Menubar extends Component {
     switch (route) {
       case 'info':
         ipcRenderer.send('request-stats', ['id', 'bw', 'repo'])
-        break
-      case 'peers':
-        ipcRenderer.send('request-stats', ['peers'])
         break
       case 'pinned':
         ipcRenderer.send('request-pinned')
@@ -171,13 +162,6 @@ class Menubar extends Component {
           root={this.state.files.root} />
       case 'settings':
         return <Settings settings={this.state.settings} />
-      case 'peers':
-        var location = 'Unknown'
-        if (this.state.stats.node) {
-          location = this.state.stats.node.location
-        }
-
-        return <Peers peers={this.state.stats.peers} location={location} />
       case 'info':
         return (
           <Info
