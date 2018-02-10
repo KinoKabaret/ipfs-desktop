@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export default function Menu (props) {
   return (
-    <div className='menu'>
+    <div className='menu bg-navy'>
       {props.children}
     </div>
   )

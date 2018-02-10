@@ -40,10 +40,6 @@ const options = [
         Enable <KeyCombo keys={['CTRL/CMD', 'ALT', 'D']} /> to download the last copied hash.
       </span>
     )
-  },
-  {
-    title: 'Light theme',
-    setting: 'lightTheme'
   }
 ]
 
