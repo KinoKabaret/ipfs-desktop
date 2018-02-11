@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
  */
 export default function Footer (props) {
   return (
-    <div className='footer'>
+    <div>
       {props.children}
     </div>
   )

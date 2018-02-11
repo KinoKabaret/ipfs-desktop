@@ -6,7 +6,6 @@ import TextInput from './common/TextInput'
 const styles = {
   header: {
     margin: '1em auto',
-    width: '90%',
     paddingBottom: '1em',
     borderBottom: '1px solid rgba(156,154,166, 0.29)',
     display: 'flex',

@@ -1,10 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {clipboard} from 'electron'
+import {clipboard, ipcRenderer} from 'electron'
 import prettyBytes from '../utils/pretty-bytes'
 
 import Pane from '../components/Pane'
 import Header from '../components/Header'
+import Footer from '../components/Footer'
+import Button from '../components/Button'
+
+function openWebUI () {
+  ipcRenderer.send('open-webui')
+}
 
 function copy (text) {
   return () => { clipboard.writeText(text) }
@@ -50,6 +56,10 @@ export default function Info (props) {
           GRAPH
         </div>
       </div>
+
+      <Footer>
+        <Button text='Open IPFS Control' onClick={openWebUI} />
+      </Footer>
     </Pane>
   )
 }

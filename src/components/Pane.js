@@ -18,12 +18,6 @@ export default function Pane (props) {
     className += ' ' + props.className
   }
 
-  React.Children.forEach(props.children, (child) => {
-    if (child.type === Footer) {
-      className += ' has-footer'
-    }
-  })
-
   return (
     <div className={className}>
       {props.children}

@@ -207,10 +207,10 @@ class Menubar extends Component {
 
   render () {
     return (
-      <PaneContainer>
+      <div className='container'>
         {this._getMenu()}
         {this._getRouteScreen()}
-      </PaneContainer>
+      </div>
     )
   }
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Input from './Input'
 
 /**
  * Is a Button.
@@ -13,16 +12,24 @@ import Input from './Input'
  * @return {ReactElement}
  */
 export default function Button (props) {
+  let className = 'bg-aqua button'
+
   return (
-    <Input className='button'>
-      <button onClick={props.onClick}>
-        <span>{props.text}</span>
-      </button>
-    </Input>
+    <button
+      className={className}
+      onClick={props.onClick}
+      disabled={props.inactive} >
+      <span>{props.text}</span>
+    </button>
   )
 }
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  inactive: PropTypes.bool
+}
+
+Button.defaultProps = {
+  inactive: false
 }
