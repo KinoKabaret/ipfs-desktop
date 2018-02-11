@@ -10,77 +10,34 @@ function copy (text) {
   return () => { clipboard.writeText(text) }
 }
 
-const styles = {
-  main: {
-    display: 'flex',
-    background: '#fff',
-    width: '90%',
-    margin: '1em auto'
-  },
-  left: {
-    width: '60%',
-    padding: '1em',
-    color: '#7f8491'
-  },
-  right: {
-    width: '40%',
-    backgroundColor: '#215d7f'
-  },
-  hr: {
-    color: '#f3f3f2',
-    border: '1px solid'
-  },
-  stats: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    width: '100%'
-  },
-  stat: {
-    title: {
-      margin: '0',
-      fontSize: '0.8em'
-    },
-    value: {
-      margin: '0',
-      fontSize: '1.25em',
-      fontWeight: 'medium'
-    }
-  },
-  title: {
-    fontSize: '28px',
-    fontWeight: '500'
-  }
-}
-
 export default function Info (props) {
   return (
     <Pane className='info'>
       <Header />
 
-      <div style={styles.main}>
-        <div style={styles.left}>
-          <div style={styles.stats}>
+      <div className='main'>
+        <div className='left'>
+          <div className='stats'>
             <div>
-              <p style={styles.stat.title}>Space Used</p>
-              <p style={styles.stat.value}>{prettyBytes(props.repo.repoSize)}</p>
+              <p className='title'>Space Used</p>
+              <p className='value'>{prettyBytes(props.repo.repoSize)}</p>
             </div>
 
             <div>
-              <p style={styles.stat.title}>Down Speed</p>
-              <p style={styles.stat.value}>{prettyBytes(props.bw.rateIn) + '/s'}</p>
+              <p className='title'>Down Speed</p>
+              <p className='value'>{prettyBytes(props.bw.rateIn) + '/s'}</p>
             </div>
 
             <div>
-              <p style={styles.stat.title}>Up Speed</p>
-              <p style={styles.stat.value}>{prettyBytes(props.bw.rateOut) + '/s'}</p>
+              <p className='title'>Up Speed</p>
+              <p className='value'>{prettyBytes(props.bw.rateOut) + '/s'}</p>
             </div>
           </div>
 
-          <hr style={styles.hr} />
+          <hr />
 
-          <div>
-            <h2 style={styles.title}>Your Node Informations</h2>
+          <div className='informations'>
+            <h2>Your Node Informations</h2>
 
             <p><strong>Location:</strong> {props.node.location}</p>
             <p><strong>Protocol Version:</strong> {props.node.protocolVersion}</p>
@@ -89,7 +46,7 @@ export default function Info (props) {
           </div>
         </div>
 
-        <div style={styles.right}>
+        <div className='right'>
           GRAPH
         </div>
       </div>

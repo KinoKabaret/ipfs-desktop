@@ -1,4 +1,4 @@
-const UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+const UNITS = ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
 
 export default function prettyBytes (num) {
   if (!Number.isFinite(num)) {

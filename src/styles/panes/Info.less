@@ -1,22 +1,61 @@
-@import '../variables.less';
-
 .info {
-  .sharing {
-    padding: 0 1em 1em;
-    p {
+  color: #7f8491;
+
+  .main {
+    display: flex;
+    background: #fff;
+    width: 90%;
+    margin: 1em auto;
+  }
+
+  .left {
+    width: 60%;
+    padding: 1em;
+    color: '#7f8491'
+  }
+
+  .right {
+    width: 40%;
+    background-color: #215d7f;
+  }
+
+  hr {
+    color: #f3f3f2;
+    border: 1px solid;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    & > div {
+      width: 33%;
+    }
+
+    .title {
       margin: 0;
+      font-size: 0.8em;
     }
-    p:first-of-type {
-      font-size: @big-font;
-    }
-    p:last-of-type {
-      font-size: @medium-font;
-      color: rgba(255, 255, 255, 0.5);
+
+    .value {
+      margin: 0;
+      font-size: 1.25em;
+      font-weight: medium;
     }
   }
 
-  .header img {
-    cursor: pointer;
-    width: 1.15em;
+  h2 {
+    font-size: 28px;
+    font-weight: 500
+  }
+
+  .informations p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8em;
+    margin: 1em 0;
   }
 }

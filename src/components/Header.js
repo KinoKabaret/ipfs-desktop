@@ -4,13 +4,18 @@ import PropTypes from 'prop-types'
 import TextInput from './common/TextInput'
 
 const styles = {
-  margin: '1em auto',
-  width: '90%',
-  paddingBottom: '1em',
-  borderBottom: '1px solid rgba(156,154,166, 0.29)',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center'
+  header: {
+    margin: '1em auto',
+    width: '90%',
+    paddingBottom: '1em',
+    borderBottom: '1px solid rgba(156,154,166, 0.29)',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  img: {
+    height: '2.25em'
+  }
 }
 
 /**
@@ -24,8 +29,8 @@ const styles = {
  */
 export default function Header (props) {
   return (
-    <div style={styles}>
-      <div>IPFS LOGO</div>
+    <div style={styles.header}>
+      <img style={styles.img} src='../img/ipfs-logo.png' />
       <TextInput value='' onChange={() => {}} placeholder='Search' />
     </div>
   )
