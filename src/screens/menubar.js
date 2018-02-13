@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import {ipcRenderer} from 'electron'
 import {DragDropContext} from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
+import { ThemeProvider } from 'styled-components'
+import theme from '../elements/theme.json'
 
 import Pane from '../components/Pane'
-import PaneContainer from '../components/PaneContainer'
 import MenuOption from '../components/MenuOption'
 import Menu from '../components/Menu'
 
@@ -207,10 +208,12 @@ class Menubar extends Component {
 
   render () {
     return (
-      <div className='container'>
-        {this._getMenu()}
-        {this._getRouteScreen()}
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className='container'>
+          {this._getMenu()}
+          {this._getRouteScreen()}
+        </div>
+      </ThemeProvider>
     )
   }
 }

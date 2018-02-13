@@ -43,12 +43,12 @@ export default function Info (props) {
           <hr />
 
           <div className='informations'>
-            <h2>Your Node Informations</h2>
+            <h2>Your node informations</h2>
 
             <p><strong>Location:</strong> {props.node.location}</p>
             <p><strong>Protocol Version:</strong> {props.node.protocolVersion}</p>
-            <p><strong>Peer ID:</strong> {props.node.id}</p>
-            <p><strong>Public Key:</strong> {props.node.publicKey}</p>
+            <p><strong>Peer ID:</strong> <code>{props.node.id}</code> <button onClick={copy(props.node.id)}>C</button></p>
+            <p><strong>Public Key:</strong> <code>{props.node.publicKey.substr(0, 30)}</code> <button onClick={copy(props.node.id)}>C</button></p>
           </div>
         </div>
 
@@ -58,7 +58,7 @@ export default function Info (props) {
       </div>
 
       <Footer>
-        <Button text='Open IPFS Control' onClick={openWebUI} />
+        <Button mx={0} fontSize={1} onClick={openWebUI}>Open IPFS Control</Button>
       </Footer>
     </Pane>
   )
