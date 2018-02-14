@@ -58,7 +58,7 @@ export default function Info (props) {
       </div>
 
       <Footer>
-        <Button mx={0} fontSize={1} onClick={openWebUI}>Open IPFS Control</Button>
+        <Button onClick={openWebUI}>Open IPFS Control</Button>
       </Footer>
     </Pane>
   )

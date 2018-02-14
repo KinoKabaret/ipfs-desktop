@@ -3,7 +3,7 @@ import {ipcRenderer} from 'electron'
 import {DragDropContext} from 'react-dnd'
 import HTML5Backend from 'react-dnd-html5-backend'
 import { ThemeProvider } from 'styled-components'
-import theme from '../elements/theme.json'
+import theme from 'ipfs-css/theme.json'
 
 import Pane from '../components/Pane'
 import MenuOption from '../components/MenuOption'
