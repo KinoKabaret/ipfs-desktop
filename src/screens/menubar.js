@@ -7,7 +7,6 @@ import theme from 'ipfs-css/theme.json'
 
 import Pane from '../components/Pane'
 import MenuOption from '../components/MenuOption'
-import Menu from '../components/Menu'
 
 import Loader from '../panes/Loader'
 import Start from '../panes/Start'
@@ -202,14 +201,16 @@ class Menubar extends Component {
     })
 
     return (
-      <Menu>{menu}</Menu>
+      <div className='flex flex-column h-100 w4 bg-navy'>
+        {menu}
+      </div>
     )
   }
 
   render () {
     return (
       <ThemeProvider theme={theme}>
-        <div className='container'>
+        <div className='sans-serif flex overflow-hidden'>
           {this._getMenu()}
           {this._getRouteScreen()}
         </div>

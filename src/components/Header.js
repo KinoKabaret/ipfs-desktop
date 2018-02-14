@@ -3,20 +3,6 @@ import PropTypes from 'prop-types'
 
 import TextInput from './common/TextInput'
 
-const styles = {
-  header: {
-    margin: '1em auto',
-    paddingBottom: '1em',
-    borderBottom: '1px solid rgba(156,154,166, 0.29)',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
-  },
-  img: {
-    height: '2.25em'
-  }
-}
-
 /**
  * Is a Pane's Header.
  *
@@ -28,8 +14,8 @@ const styles = {
  */
 export default function Header (props) {
   return (
-    <div style={styles.header}>
-      <img style={styles.img} src='../img/ipfs-logo.png' />
+    <div className='mv3 center pb3 flex justify-between items-center bb b--moon-gray'>
+      <img className='h2-25' src='../img/ipfs-logo.png' />
       <TextInput value='' onChange={() => {}} placeholder='Search' />
     </div>
   )

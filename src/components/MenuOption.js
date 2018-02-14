@@ -21,7 +21,6 @@ export default function MenuOption (props) {
 
   return (
     <button onClick={props.onClick} className={className}>
-      <Icon name={props.icon} />
       <p>{props.title}</p>
     </button>
   )

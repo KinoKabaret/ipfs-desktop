@@ -18,32 +18,32 @@ function copy (text) {
 
 export default function Info (props) {
   return (
-    <Pane className='info'>
+    <Pane className='info charcoal-muted'>
       <Header />
 
-      <div className='main'>
-        <div className='left'>
-          <div className='stats'>
-            <div>
-              <p className='title'>Space Used</p>
-              <p className='value'>{prettyBytes(props.repo.repoSize)}</p>
+      <div className='bg-white flex center mv3'>
+        <div className='w-60 pa3'>
+          <div className='flex justify-between items-center w-100'>
+            <div className='w-third'>
+              <p className='ma0 f6'>Space Used</p>
+              <p className='ma0 f4 fw-500'>{prettyBytes(props.repo.repoSize)}</p>
             </div>
 
-            <div>
-              <p className='title'>Down Speed</p>
-              <p className='value'>{prettyBytes(props.bw.rateIn) + '/s'}</p>
+            <div className='w-third'>
+              <p className='ma0 f6'>Down Speed</p>
+              <p className='ma0 f4 fw-500'>{prettyBytes(props.bw.rateIn) + '/s'}</p>
             </div>
 
-            <div>
-              <p className='title'>Up Speed</p>
-              <p className='value'>{prettyBytes(props.bw.rateOut) + '/s'}</p>
+            <div className='w-third'>
+              <p className='ma0 f6'>Up Speed</p>
+              <p className='ma0 f4 fw5'>{prettyBytes(props.bw.rateOut) + '/s'}</p>
             </div>
           </div>
 
           <hr />
 
           <div className='informations'>
-            <h2>Your node informations</h2>
+            <h2 className='f3 fw5'>Your node informations</h2>
 
             <p><strong>Location:</strong> {props.node.location}</p>
             <p><strong>Protocol Version:</strong> {props.node.protocolVersion}</p>
@@ -52,7 +52,7 @@ export default function Info (props) {
           </div>
         </div>
 
-        <div className='right'>
+        <div className='w-40 bg-navy-muted'>
           GRAPH
         </div>
       </div>

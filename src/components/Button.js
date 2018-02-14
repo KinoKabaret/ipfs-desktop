@@ -6,7 +6,7 @@ export default function Button (props) {
   if (props.disabled) {
     classList += ' bg-gray-muted gray'
   } else {
-    classList += ' bg-aqua white pointer'
+    classList += ` bg-${props.color} hover-bg-${props.color}-muted white pointer`
   }
 
   return (
@@ -21,9 +21,11 @@ export default function Button (props) {
 Button.propTypes = {
   children: PropTypes.any,
   disabled: PropTypes.bool,
+  color: PropTypes.string,
   onClick: PropTypes.func.isRequired
 }
 
 Button.defaultProps = {
-  disabled: false
+  disabled: false,
+  color: 'aqua'
 }
