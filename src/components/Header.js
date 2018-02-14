@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import TextInput from './common/TextInput'
+import TextInput from './TextInput'
 
 /**
  * Is a Pane's Header.

@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from 'ipfs-css/theme.json'
 
 import Pane from '../components/Pane'
-import MenuOption from '../components/MenuOption'
+import {Menu, MenuOption} from '../components/Menu'
 
 import Loader from '../panes/Loader'
 import Start from '../panes/Start'
@@ -21,33 +21,10 @@ const STARTING = 'starting'
 const STOPPING = 'stopping'
 const RUNNING = 'running'
 
-const panes = [
-  {
-    id: 'info',
-    title: 'Info',
-    icon: 'ipfs'
-  },
-  {
-    id: 'files',
-    title: 'Files',
-    icon: 'files'
-  },
-  {
-    id: 'pinned',
-    title: 'Pin',
-    icon: 'pin'
-  },
-  {
-    id: 'settings',
-    title: 'Settings',
-    icon: 'settings'
-  }
-]
-
 class Menubar extends Component {
   state = {
     status: UNINITIALIZED,
-    route: panes[0].id,
+    route: 'files',
     stats: {},
     settings: {},
     files: {
@@ -186,32 +163,28 @@ class Menubar extends Component {
     }
   }
 
-  _getMenu () {
-    const menu = []
-
-    panes.forEach((pane) => {
-      menu.push((
-        <MenuOption
-          key={pane.id}
-          title={pane.title}
-          icon={pane.icon}
-          active={this.state.route === pane.id}
-          onClick={() => this._changeRoute(pane.id)} />
-      ))
-    })
-
-    return (
-      <div className='flex flex-column h-100 w4 bg-navy'>
-        {menu}
-      </div>
-    )
-  }
-
   render () {
     return (
       <ThemeProvider theme={theme}>
         <div className='sans-serif flex overflow-hidden'>
-          {this._getMenu()}
+          <Menu>
+            <MenuOption
+              title='My Files'
+              icon='files'
+              active={this.state.route === 'files'}
+              onClick={() => this._changeRoute('files')} />
+
+            <MenuOption
+              title='Node Info'
+              icon='info'
+              active={this.state.route === 'info'}
+              onClick={() => this._changeRoute('info')} />
+
+            <div className='mt-auto'>
+            Settings
+            Close
+            </div>
+          </Menu>
           {this._getRouteScreen()}
         </div>
       </ThemeProvider>

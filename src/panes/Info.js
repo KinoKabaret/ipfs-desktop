@@ -26,12 +26,12 @@ export default function Info (props) {
           <div className='flex justify-between items-center w-100'>
             <div className='w-third'>
               <p className='ma0 f6'>Space Used</p>
-              <p className='ma0 f4 fw-500'>{prettyBytes(props.repo.repoSize)}</p>
+              <p className='ma0 f4 fw5'>{prettyBytes(props.repo.repoSize)}</p>
             </div>
 
             <div className='w-third'>
               <p className='ma0 f6'>Down Speed</p>
-              <p className='ma0 f4 fw-500'>{prettyBytes(props.bw.rateIn) + '/s'}</p>
+              <p className='ma0 f4 fw5'>{prettyBytes(props.bw.rateIn) + '/s'}</p>
             </div>
 
             <div className='w-third'>
