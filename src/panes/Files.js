@@ -7,7 +7,7 @@ import {DropTarget} from 'react-dnd'
 import Pane from '../components/Pane'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import IconButton from '../components/IconButton'
+import Button from '../components/Button'
 import FileBlock from '../components/FileBlock'
 import Breadcrumbs from '../components/Breadcrumbs'
 
@@ -133,7 +133,7 @@ class Files extends Component {
       <div className='relative h-100 overflow-y-auto overflow-x-hidden mh4 mv0 flex-grow-1'>
         <Header title={this.makeBreadcrumbs()} loading={this.props.adding} />
 
-        <div className='main'>
+        <div className='bg-white flex flex-column center mv3'>
           {files}
         </div>
 
@@ -142,11 +142,9 @@ class Files extends Component {
         </div>
 
         <Footer>
-          <IconButton active={this.state.sticky} onClick={this.toggleStickWindow} icon='eye' />
-
           <div className='right'>
-            <IconButton onClick={this.selectFileDialog} icon='plus' />
-            <IconButton onClick={this.selectDirectoryDialog} icon='folder' />
+            <Button onClick={this.selectFileDialog}>Add file</Button>
+            <Button onClick={this.selectDirectoryDialog}>Add folder</Button>
           </div>
         </Footer>
       </div>
