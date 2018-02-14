@@ -28,6 +28,22 @@ const fileTarget = {
   }
 }
 
+function Tab (props) {
+  let classList = 'button-reset outline-0 pointer ph3 pv2 bn '
+  if (props.active) {
+    classList += 'bg-white black-80'
+  } else {
+    classList += 'bg-transparent charcoal-muted'
+  }
+
+  return <button className={classList}>{props.children}</button>
+}
+
+Tab.propTypes = {
+  children: PropTypes.any.isRequired,
+  active: PropTypes.bool
+}
+
 class Files extends Component {
   constructor (props) {
     super(props)
@@ -133,7 +149,12 @@ class Files extends Component {
       <div className='relative h-100 overflow-y-auto overflow-x-hidden mh4 mv0 flex-grow-1'>
         <Header title={this.makeBreadcrumbs()} loading={this.props.adding} />
 
-        <div className='bg-white flex flex-column center mv3'>
+        <div className='mt3'>
+          <Tab active>Recent files</Tab>
+          <Tab>Pinned files</Tab>
+        </div>
+
+        <div className='bg-white flex flex-column center mb3'>
           {files}
         </div>
 

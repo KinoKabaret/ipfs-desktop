@@ -110,14 +110,14 @@ export default class FileBlock extends Component {
       )
     }
 
-    let className = 'flex charcoal-muted'
+    let className = 'flex charcoal-muted hover-bg-aqua-muted hover-navy'
 
     return (
       <div {...this.props.open !== null && !this.state.deleting && { onClick: this.open }}
         className={className}>
 
-        <p className='ma0 w-40'>{this.props.name}</p>
-        <p className='ma0 w-15'>{prettyBytes(this.props.size)}</p>
+        <p className='ma0 pv2 w-40'>{this.props.name}</p>
+        <p className='ma0 pv2 w-15'>{prettyBytes(this.props.size)}</p>
 
       </div>
     )

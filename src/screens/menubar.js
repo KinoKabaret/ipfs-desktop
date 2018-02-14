@@ -11,7 +11,6 @@ import {Menu, MenuOption} from '../components/Menu'
 import Loader from '../panes/Loader'
 import Start from '../panes/Start'
 import Files from '../panes/Files'
-import Pinned from '../panes/Pinned'
 import Info from '../panes/Info'
 import Settings from '../panes/Settings'
 
@@ -136,6 +135,7 @@ class Menubar extends Component {
         return <Files
           adding={this.state.adding}
           files={this.state.files.contents}
+          pins={this.state.pinned}
           root={this.state.files.root} />
       case 'settings':
         return <Settings settings={this.state.settings} />
@@ -145,12 +145,6 @@ class Menubar extends Component {
             node={this.state.stats.id}
             bw={this.state.stats.bw}
             repo={this.state.stats.repo} />
-        )
-      case 'pinned':
-        return (
-          <Pinned
-            files={this.state.pinned}
-            pinning={this.state.pinning} />
         )
       default:
         return (
