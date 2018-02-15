@@ -6,7 +6,7 @@ import Pane from '../components/Pane'
 import Header from '../components/Header'
 import InfoBlock from '../components/InfoBlock'
 import CheckboxBlock from '../components/CheckboxBlock'
-import KeyCombo from '../components/KeyCombo'
+import {KeyCombo} from '../components/Key'
 
 function generateOnChange (key) {
   return (value) => {

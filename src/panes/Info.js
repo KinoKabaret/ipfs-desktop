@@ -18,10 +18,10 @@ function copy (text) {
 
 export default function Info (props) {
   return (
-    <Pane className='info charcoal-muted'>
+    <Pane className='info charcoal-muted flex flex-column justify-between'>
       <Header />
 
-      <div className='bg-white flex center mv3'>
+      <div className='bg-white flex flex-grow-1 w-100'>
         <div className='w-60 pa3'>
           <div className='flex justify-between items-center w-100'>
             <div className='w-third'>

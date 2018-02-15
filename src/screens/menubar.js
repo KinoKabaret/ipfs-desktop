@@ -7,6 +7,7 @@ import theme from 'ipfs-css/theme.json'
 
 import Pane from '../components/Pane'
 import {Menu, MenuOption} from '../components/Menu'
+import Icon from '../components/Icon'
 
 import Loader from '../panes/Loader'
 import Start from '../panes/Start'
@@ -158,25 +159,38 @@ class Menubar extends Component {
   }
 
   render () {
+    setInterval(() => {
+      window.trimSvgWhitespace()
+    }, 500)
+
     return (
       <ThemeProvider theme={theme}>
         <div className='sans-serif flex overflow-hidden'>
           <Menu>
             <MenuOption
               title='My Files'
-              icon='files'
+              icon='document'
               active={this.state.route === 'files'}
               onClick={() => this._changeRoute('files')} />
 
             <MenuOption
               title='Node Info'
-              icon='info'
+              icon='decentralization'
               active={this.state.route === 'info'}
               onClick={() => this._changeRoute('info')} />
 
-            <div className='mt-auto'>
-            Settings
-            Close
+            <div className='mt-auto flex justify-around pv3 ph2'>
+              <Icon
+                onClick={() => this._changeRoute('settings')}
+                className='w2 h2 pointer dim'
+                name='settings'
+                color='navy' />
+
+              <Icon
+                onClick={() => ipcRenderer.send('stop-daemon')}
+                className='w2 h2 pointer dim'
+                name='power'
+                color='navy' />
             </div>
           </Menu>
           {this._getRouteScreen()}

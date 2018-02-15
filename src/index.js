@@ -233,6 +233,8 @@ DaemonFactory.create().spawn({
 
     registerControls(config)
 
+    menubar.window.setAlwaysOnTop(true)
+
     let exists = fs.existsSync(node.repoPath)
 
     if (!exists) {

@@ -5,7 +5,7 @@ import Icon from './Icon'
 
 export function Menu (props) {
   return (
-    <div className='flex flex-column h-100 w4 bg-navy'>
+    <div className='flex flex-column h-100 w4 bg-navy-muted'>
       {props.children}
     </div>
   )
@@ -16,16 +16,24 @@ Menu.propTypes = {
 }
 
 export function MenuOption (props) {
-  let className = 'button-reset sans-serif pointer bg-transparent bn outline-0'
+  let className = 'button-reset sans-serif pointer bg-transparent bn outline-0 mv3'
   if (props.active) {
     className += ' white'
   } else {
     className += ' aqua-muted hover-white'
   }
 
+  let icon
+  if (props.active) {
+    icon = <Icon stroke className='center w2 mb3' name={props.icon} color='snow' />
+  } else {
+    icon = <Icon stroke className='center w2 mb3' name={props.icon} color='aqua-muted' />
+  }
+
   return (
     <button onClick={props.onClick} className={className}>
-      <p>{props.title}</p>
+      {icon}
+      <p className='ma0'>{props.title}</p>
     </button>
   )
 }

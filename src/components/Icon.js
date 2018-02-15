@@ -1,8 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {resolve, join} from 'path'
+import fs from 'fs'
 
-const logoBlack = resolve(join(__dirname, '../img/ipfs-logo-black.png'))
+function getSVG (pkg, stroke) {
+  const path = `./node_modules/ipfs-css/icons/${stroke ? 'stroke' : 'glyph'}_${pkg}.svg`
+
+  if (fs.existsSync(path)) {
+    return fs.readFileSync(path)
+  } else {
+    return fs.readFileSync(path.replace(stroke ? 'stroke' : 'glyph', stroke ? 'glyph' : 'stroke'))
+  }
+}
 
 /**
  * Is an Icon.
@@ -20,20 +28,32 @@ export default function Icon (props) {
     style.color = props.color
   }
 
-  if (props.name === 'ipfs') {
-    return (
-      <span className='icon'>
-        <img alt='IPFS Logo' src={`file://${logoBlack}`} />
-      </span>
-    )
+  let className = `fill-${props.color}`
+  if (props.className) {
+    className += ' ' + props.className
   }
 
-  return (
-    <span style={style} className={`icon ti-${props.name}`} />
-  )
+  const options = Object.assign({}, props, {
+    stroke: undefined,
+    className: undefined,
+    name: undefined,
+    color: undefined
+  })
+
+  return <div
+    {...options}
+    className={className}
+    dangerouslySetInnerHTML={{__html: getSVG(props.name, props.stroke)}} />
 }
 
 Icon.propTypes = {
+  stroke: PropTypes.bool,
+  className: PropTypes.string,
   name: PropTypes.string.isRequired,
   color: PropTypes.string
+}
+
+Icon.defaultProps = {
+  stroke: false,
+  color: 'snow'
 }

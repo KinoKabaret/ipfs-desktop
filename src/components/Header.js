@@ -14,7 +14,7 @@ import TextInput from './TextInput'
  */
 export default function Header (props) {
   return (
-    <div className='mv3 center pb3 flex justify-between items-center bb b--moon-gray'>
+    <div className='mv3 center w-100 pb3 flex justify-between items-center flex-shrink-0 bb b--moon-gray'>
       <img className='h2-25' src='../img/ipfs-logo.png' />
       <TextInput value='' onChange={() => {}} placeholder='Search' />
     </div>

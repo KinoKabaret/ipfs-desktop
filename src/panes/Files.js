@@ -8,7 +8,7 @@ import Pane from '../components/Pane'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Button from '../components/Button'
-import FileBlock from '../components/FileBlock'
+import File from '../components/File'
 import Breadcrumbs from '../components/Breadcrumbs'
 
 function join (...parts) {
@@ -120,9 +120,10 @@ class Files extends Component {
 
     let files = this.props.files.filter((file) => {
       return !(file.name === '.pinset' && this.props.root === '/')
-    }).map((file) => {
+    }).map((file, index) => {
       return (
-        <FileBlock
+        <File
+          odd={index % 2 === 0 /* it starts with 0 */}
           name={file.name}
           hash={file.hash}
           type={file.type}
@@ -146,15 +147,15 @@ class Files extends Component {
     }
 
     return connectDropTarget(
-      <div className='relative h-100 overflow-y-auto overflow-x-hidden mh4 mv0 flex-grow-1'>
+      <div className='files relative h-100 flex flex-column justify-between mh4 mv0 flex-grow-1'>
         <Header title={this.makeBreadcrumbs()} loading={this.props.adding} />
 
-        <div className='mt3'>
+        <div>
           <Tab active>Recent files</Tab>
           <Tab>Pinned files</Tab>
         </div>
 
-        <div className='bg-white flex flex-column center mb3'>
+        <div className='bg-white w-100 overflow-y-scroll'>
           {files}
         </div>
 
@@ -164,7 +165,7 @@ class Files extends Component {
 
         <Footer>
           <div className='right'>
-            <Button onClick={this.selectFileDialog}>Add file</Button>
+            <Button className='mr2' onClick={this.selectFileDialog}>Add file</Button>
             <Button onClick={this.selectDirectoryDialog}>Add folder</Button>
           </div>
         </Footer>
